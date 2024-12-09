@@ -26,6 +26,7 @@ nala install -y \
     htop \
     git \
     docker.io \
+    docker-compose \
     vim \
     gufw \
     curl \
@@ -33,8 +34,14 @@ nala install -y \
     nginx \
     cmatrix \
     figlet \
-    lolcat
-
+    lolcat \
+    nethog \
+    bmon \
+    iptraf \
+    cbm \
+    openssh-server \
+    net-tools \
+    
 # Enable and start Docker service
 echo "Enabling and starting Docker service..."
 systemctl enable docker
