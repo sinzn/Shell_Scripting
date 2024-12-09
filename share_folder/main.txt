@@ -1,0 +1,33 @@
+sudo passwd root 
+sudo apt update && sudo apt upgrade 
+sudo apt install samba samba-common python-glade2-config-samba
+
+sudo mv /etc/samba/smb.conf  /etc/samba/smb.conf.bak
+sudo nano /etc/samba/smb.conf
+
+
+[global] 
+  workgroup = WORKGROUP
+  server string = Samba Server %v 
+  netbios name = ubuntu 
+  security = user
+  map to guest = bad user
+  name resolve order = bcast host 
+  dns proxy = no
+
+Add to the end
+
+[Public] 
+ comment = Ubuntu File Share
+ path = /srv/samba/share
+ browsable = yes 
+ writable = yes 
+ guest ok = yes 
+ read only = no
+ create mode = 0777 
+ directory mode 0777 
+ force user = nobody
+
+sudo mkdir -p /srv/samba/share 
+sudo chown nobody:nogroup /srv/samba/share
+sudo chmod -R 0777 /srv/samba/share
